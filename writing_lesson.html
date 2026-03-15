@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Write in English – Up to 80 Words</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bread: #f5a623;
+    --filling: #e8f4ea;
+    --green: #2ecc71;
+    --dark-green: #27ae60;
+    --blue: #3498db;
+    --dark-blue: #2980b9;
+    --red: #e74c3c;
+    --purple: #9b59b6;
+    --yellow: #f1c40f;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--dark);
+  }
+  .page-title {
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.6rem;
+    color: white;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  /* NAV TABS */
+  .nav-tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .tab-btn {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+  }
+  .tab-btn:hover { background: rgba(255,255,255,0.35); transform: translateY(-2px); }
+  .tab-btn.active { background: white; color: #764ba2; border-color: white; }
+
+  .section { display: none; animation: fadeIn 0.4s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .card-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .emoji-badge {
+    font-size: 1.8rem;
+    background: var(--light);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* SANDWICH */
+  .sandwich {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin: 20px 0;
+  }
+  .sandwich-layer {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 12px;
+    padding: 16px 24px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: default;
+    transition: transform 0.2s;
+    position: relative;
+  }
+  .sandwich-layer:hover { transform: scale(1.02); }
+  .bread-top, .bread-bottom {
+    background: linear-gradient(135deg, #f5a623, #f39c12);
+    color: white;
+    border-radius: 50px 50px 20px 20px;
+  }
+  .bread-bottom { border-radius: 20px 20px 50px 50px; }
+  .lettuce-layer { background: #d5f5d5; color: #27ae60; }
+  .meat-layer { background: #fdebd0; color: #d35400; }
+  .cheese-layer { background: #fef9e7; color: #f39c12; }
+
+  .sandwich-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.75;
+    display: block;
+  }
+  .sandwich-content { font-size: 1rem; }
+
+  /* EXAMPLE BOX */
+  .example-box {
+    background: linear-gradient(135deg, #e8f4fd, #d5e8f8);
+    border-left: 5px solid var(--blue);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .example-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .example-text { line-height: 1.7; font-size: 0.98rem; }
+  .highlight { background: #fff3b0; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+
+  /* TIPS */
+  .tip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .tip-card {
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .tip-card.green { background: #eafaf1; border: 2px solid #a9dfbf; }
+  .tip-card.blue { background: #eaf2fb; border: 2px solid #aed6f1; }
+  .tip-card.orange { background: #fef5e7; border: 2px solid #f8c471; }
+  .tip-card.purple { background: #f5eef8; border: 2px solid #d2b4de; }
+  .tip-card h4 { font-weight: 800; margin-bottom: 6px; font-size: 1rem; }
+
+  /* WORD BANK */
+  .word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+  }
+  .word-chip {
+    background: var(--light);
+    border: 2px solid #bdc3c7;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .word-chip:hover { background: var(--blue); color: white; border-color: var(--blue); transform: scale(1.05); }
+  .word-chip.used { background: var(--green); color: white; border-color: var(--green); }
+
+  /* PRACTICE TASKS */
+  .practice-task {
+    background: linear-gradient(135deg, #f0f7ff, #e8f4fd);
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 18px;
+    border: 2px dashed #aed6f1;
+  }
+  .task-number {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--blue);
+    float: left;
+    margin-right: 14px;
+    line-height: 1;
+  }
+  .task-prompt {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .task-hint {
+    font-size: 0.88rem;
+    color: #7f8c8d;
+    margin-bottom: 12px;
+  }
+  textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 2px solid #d5d8dc;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color 0.2s;
+    line-height: 1.6;
+  }
+  textarea:focus { outline: none; border-color: var(--blue); }
+  .word-counter {
+    text-align: right;
+    font-size: 0.82rem;
+    margin-top: 6px;
+    font-weight: 700;
+  }
+  .count-ok { color: var(--green); }
+  .count-over { color: var(--red); }
+  .count-under { color: #95a5a6; }
+
+  .check-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .check-btn.blue-btn { background: var(--blue); color: white; }
+  .check-btn.green-btn { background: var(--green); color: white; }
+  .check-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .feedback-box {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    display: none;
+  }
+  .feedback-box.show { display: block; }
+  .feedback-box.success { background: #d5f5e3; color: #1e8449; border: 2px solid #a9dfbf; }
+  .feedback-box.warning { background: #fef9e7; color: #b7950b; border: 2px solid #f9e79f; }
+  .feedback-box.info { background: #eaf2fb; color: #1a5276; border: 2px solid #aed6f1; }
+
+  /* RUBRIC */
+  .rubric-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 16px;
+  }
+  .rubric-table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 12px 10px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+  .rubric-table th:first-child { text-align: left; border-radius: 10px 0 0 0; }
+  .rubric-table th:last-child { border-radius: 0 10px 0 0; }
+  .rubric-table td {
+    padding: 10px;
+    border: 1px solid #dfe6e9;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .rubric-table tr:nth-child(even) td { background: #f8f9fa; }
+  .rubric-table tr:hover td { background: #eaf2fb; }
+  .criterion-name {
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #2c3e50;
+  }
+  .score-3 { color: var(--dark-green); font-weight: 700; }
+  .score-2 { color: var(--dark-blue); font-weight: 700; }
+  .score-1 { color: #e67e22; font-weight: 700; }
+  .score-0 { color: var(--red); font-weight: 700; }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50px;
+    height: 8px;
+    margin: 10px 0 20px;
+  }
+  .progress-bar {
+    background: var(--yellow);
+    height: 8px;
+    border-radius: 50px;
+    transition: width 0.4s ease;
+  }
+
+  /* COMPARE BOXES */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-box {
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  .compare-box.weak { background: #fdf2f8; border: 2px solid #e8a1c8; }
+  .compare-box.strong { background: #eafaf1; border: 2px solid #a9dfbf; }
+  .compare-label {
+    font-weight: 800;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  /* ACCORDION */
+  .accordion {
+    border: 2px solid #dfe6e9;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .accordion-header {
+    background: #f8f9fa;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .accordion-header:hover { background: #eaf2fb; }
+  .accordion-header .arrow { transition: transform 0.3s; font-size: 1.2rem; }
+  .accordion-header.open .arrow { transform: rotate(180deg); }
+  .accordion-body {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+  }
+  .accordion-body.open { max-height: 1000px; padding: 16px 20px; }
+
+  /* DIVIDER */
+  .section-divider {
+    text-align: center;
+    margin: 22px 0;
+    position: relative;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    color: #7f8c8d;
+  }
+  .section-divider::before, .section-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 2px;
+    background: #dfe6e9;
+  }
+  .section-divider::before { left: 0; }
+  .section-divider::after { right: 0; }
+
+  /* EXTENSION BADGE */
+  .extension-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  /* HEBREW NOTES */
+  .he {
+    direction: rtl;
+    font-family: 'Segoe UI', 'Arial Hebrew', Arial, sans-serif;
+    font-size: 0.84rem;
+    color: #5d6d7e;
+    background: #f4f6f7;
+    border-right: 3px solid #aab7c4;
+    border-radius: 0 8px 8px 0;
+    padding: 6px 10px 6px 8px;
+    margin-top: 6px;
+    line-height: 1.6;
+    display: block;
+  }
+  .he strong { color: #2c3e50; }
+  .he-inline {
+    direction: rtl;
+    font-family: 'Segoe UI', 'Arial Hebrew', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    display: block;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .page-title { font-size: 1.9rem; }
+    .card { padding: 18px; }
+    .rubric-table { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">✍️ How to Write in English</h1>
+<p class="subtitle">Grades 7–9 • Up to 80 Words • Descriptive & Argumentative</p>
+<p style="text-align:center; color:rgba(255,255,255,0.75); font-size:0.95rem; margin-bottom:20px; direction:rtl; font-family:'Segoe UI','Arial Hebrew',Arial,sans-serif;">כיתות ז׳–ט׳ • כתיבה עד 80 מילים • טקסט תיאורי וטיעוני</p>
+
+<nav class="nav-tabs">
+  <button class="tab-btn active" onclick="showTab('intro')">🎯 Intro</button>
+  <button class="tab-btn" onclick="showTab('descriptive')">🖼️ Descriptive</button>
+  <button class="tab-btn" onclick="showTab('argumentative')">💬 Argumentative</button>
+  <button class="tab-btn" onclick="showTab('practice')">✏️ Practice</button>
+  <button class="tab-btn" onclick="showTab('rubric')">📊 Rubric</button>
+</nav>
+
+<!-- ══════════════ INTRO ══════════════ -->
+<div id="intro" class="section active">
+
+  <div class="card">
+    <div class="card-title" style="color:#764ba2">
+      <div class="emoji-badge">🎯</div>
+      What Are We Learning Today?
+    </div>
+    <p style="font-size:1.05rem; line-height:1.8; margin-bottom:16px;">
+      Writing in English doesn't have to be scary! Today you'll learn a <strong>simple system</strong> to write <strong>80 words</strong> that look really good — using the <strong>Sandwich Method 🥪</strong>.
+      <span class="he">כתיבה באנגלית לא חייבת להיות מפחידה! היום תלמדו <strong>שיטה פשוטה</strong> לכתוב <strong>80 מילים</strong> שנראות ממש טוב — בעזרת <strong>שיטת הסנדוויץ׳ 🥪</strong>.</span>
+    </p>
+    <div class="tip-grid">
+      <div class="tip-card green">
+        <h4>🖼️ Descriptive Text</h4>
+        You <em>describe</em> something – a place, a person, or a feeling. You use words that help the reader <strong>see</strong> what you see.
+        <span class="he-inline">אתם <em>מתארים</em> משהו — מקום, אדם, או תחושה. משתמשים במילים שעוזרות לקורא <strong>לדמיין</strong> את מה שאתם רואים.</span>
+      </div>
+      <div class="tip-card blue">
+        <h4>💬 Argumentative Text</h4>
+        You give your <em>opinion</em> and explain <strong>why</strong> you think that. You try to convince the reader to agree with you.
+        <span class="he-inline">אתם נותנים את <em>הדעה שלכם</em> ומסבירים <strong>למה</strong>. אתם מנסים לשכנע את הקורא להסכים איתכם.</span>
+      </div>
+    </div>
+    <div style="margin-top:14px; padding:14px 18px; background:#fef9e7; border-radius:12px; border:2px solid #f9e79f; font-size:0.95rem;">
+      <strong>📏 The 80-Word Rule:</strong> Your writing should be <em>around</em> 80 words. Not too short, not too long. Think of it like a text message — it should say everything it needs to say, clearly.
+      <span class="he">הכתיבה שלכם צריכה להיות <em>בערך</em> 80 מילים. לא קצר מדי, לא ארוך מדי. תחשבו על זה כמו הודעת WhatsApp — צריך להגיד הכל, בצורה ברורה.</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:#e67e22">
+      <div class="emoji-badge">🥪</div>
+      The Sandwich Method
+    </div>
+    <p style="margin-bottom:16px; line-height:1.7;">
+      A good paragraph is like a sandwich! Every layer has a job to do:
+      <span class="he">פסקה טובה היא כמו סנדוויץ׳! לכל שכבה יש תפקיד:</span>
+    </p>
+    <div class="sandwich">
+      <div class="sandwich-layer bread-top">
+        <span class="sandwich-label">🍞 Top Bread — Opening / Topic Sentence</span>
+        <span class="sandwich-content">Start strong! Tell the reader what you're writing about.</span>
+        <span class="he-inline">פתיחה חזקה! תגידו לקורא על מה הטקסט.</span>
+      </div>
+      <div class="sandwich-layer lettuce-layer">
+        <span class="sandwich-label">🥬 Lettuce — First Detail / Reason</span>
+        <span class="sandwich-content">Give one detail, reason, or example.</span>
+        <span class="he-inline">תנו פרט ראשון, סיבה, או דוגמה.</span>
+      </div>
+      <div class="sandwich-layer meat-layer">
+        <span class="sandwich-label">🥩 Meat — Second Detail / Reason</span>
+        <span class="sandwich-content">Add another detail or reason. Make it juicy!</span>
+        <span class="he-inline">הוסיפו פרט נוסף. תעשו אותו מעניין!</span>
+      </div>
+      <div class="sandwich-layer cheese-layer">
+        <span class="sandwich-label">🧀 Cheese — Extra Detail <span class="extension-badge">Optional +</span></span>
+        <span class="sandwich-content">Add one more detail if you want to write more.</span>
+        <span class="he-inline">פרט נוסף — אם רוצים לכתוב יותר.</span>
+      </div>
+      <div class="sandwich-layer bread-bottom">
+        <span class="sandwich-label">🍞 Bottom Bread — Closing Sentence</span>
+        <span class="sandwich-content">Finish strong! Sum up your idea in one sentence.</span>
+        <span class="he-inline">סיום חזק! סכמו את הרעון שלכם במשפט אחד.</span>
+      </div>
+    </div>
+    <div class="example-box" style="margin-top:18px;">
+      <div class="example-label">⚡ Quick Example</div>
+      <div class="example-text">
+        <span class="highlight">My bedroom is my favorite place in the world.</span> 
+        It is small but very comfortable, with a soft bed and colorful posters on the walls. 
+        The light from the window is perfect for reading. 
+        <span class="highlight">Whenever I am tired or sad, my room makes me feel safe and happy.</span>
+      </div>
+    </div>
+    <p style="margin-top:10px; font-size:0.88rem; color:#7f8c8d; font-weight:600;">
+      🟡 Top bread = orange highlight | 🟡 Bottom bread = orange highlight | 🥬 Middle = details
+    </p>
+  </div>
+
+</div>
+
+<!-- ══════════════ DESCRIPTIVE ══════════════ -->
+<div id="descriptive" class="section">
+
+  <div class="card">
+    <div class="card-title" style="color:#27ae60">
+      <div class="emoji-badge">🖼️</div>
+      Descriptive Writing — Paint a Picture with Words!
+    </div>
+    <p style="line-height:1.8; margin-bottom:16px; font-size:1.02rem;">
+      In a descriptive text, you <strong>describe</strong> something so clearly that the reader can imagine it. Use the <strong>5 Senses</strong> — what do you <em>see</em>, <em>hear</em>, <em>smell</em>, <em>feel</em>, <em>taste</em>?
+      <span class="he">בטקסט תיאורי אתם <strong>מתארים</strong> משהו בצורה כל כך ברורה שהקורא יכול לדמיין אותו. השתמשו ב-<strong>5 חושים</strong> — מה אתם <em>רואים</em>, <em>שומעים</em>, <em>מריחים</em>, <em>מרגישים</em>, <em>טועמים</em>?</span>
+    </p>
+    <div class="tip-grid">
+      <div class="tip-card green"><h4>👁️ See / רואים</h4>Colors, shapes, sizes, people, things<br><span class="he-inline">צבעים, צורות, גדלים, אנשים, דברים</span></div>
+      <div class="tip-card blue"><h4>👂 Hear / שומעים</h4>Loud, quiet, music, noise, voices<br><span class="he-inline">רועש, שקט, מוזיקה, קולות</span></div>
+      <div class="tip-card orange"><h4>👃 Smell / מריחים</h4>Fresh, sweet, smoky, clean, warm<br><span class="he-inline">טרי, מתוק, מעושן, נקי, חמים</span></div>
+      <div class="tip-card purple"><h4>🤚 Touch / Feel / מרגישים</h4>Soft, hard, cold, warm, smooth<br><span class="he-inline">רך, קשה, קר, חם, חלק</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:#2980b9">
+      <div class="emoji-badge">📝</div>
+      How to Write a Descriptive Text — Step by Step
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        🍞 Step 1 — Write your Opening Sentence (Top Bread)
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p style="margin-bottom:10px; line-height:1.7;">Your first sentence introduces the topic. <strong>Don't start with "I"!</strong> Try one of these patterns:
+        <span class="he">המשפט הראשון מציג את הנושא. <strong>אל תתחילו עם "I"!</strong> נסו אחד מהדפוסים האלה:</span></p>
+        <div class="word-bank">
+          <span class="word-chip">There is a place...</span>
+          <span class="word-chip">One of my favorite...</span>
+          <span class="word-chip">Every time I visit...</span>
+          <span class="word-chip">The moment you walk in...</span>
+          <span class="word-chip">I will never forget...</span>
+        </div>
+        <div class="example-box">
+          <div class="example-label">✅ Good Opening</div>
+          <div class="example-text">The old market in my city is one of the most interesting places I know.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        🥬 Step 2 — Add Details (The Filling)
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p style="margin-bottom:10px; line-height:1.7;">Describe what you see, hear, smell, or feel. Use <strong>adjectives</strong> (describing words) to make it interesting.
+        <span class="he">תארו מה שאתם רואים, שומעים, מריחים, או מרגישים. השתמשו ב<strong>שמות תואר</strong> (מילות תיאור) כדי שיהיה מעניין.</span></p>
+        <div class="tip-grid">
+          <div class="tip-card green">
+            <h4>Basic words → Better words</h4>
+            <span class="he-inline">מילים בסיסיות ← מילים טובות יותר</span>
+            big → <strong>huge</strong> <span class="he-inline">גדול ← ענק</span><br>
+            nice → <strong>beautiful / amazing</strong> <span class="he-inline">נחמד ← יפה / מדהים</span><br>
+            bad → <strong>terrible / awful</strong> <span class="he-inline">רע ← נורא</span><br>
+            small → <strong>tiny / cozy</strong> <span class="he-inline">קטן ← זעיר / נעים</span><br>
+            good → <strong>fantastic / wonderful</strong> <span class="he-inline">טוב ← נפלא</span>
+          </div>
+          <div class="tip-card blue">
+            <h4>Useful connector words <span class="he-inline">מילות קישור שימושיות</span></h4>
+            <strong>Also</strong> / <strong>In addition</strong> — add info <span class="he-inline">גם / בנוסף — להוסיף מידע</span><br>
+            <strong>For example</strong> — give example <span class="he-inline">לדוגמה</span><br>
+            <strong>On one side... on the other</strong> <span class="he-inline">מצד אחד... מצד שני</span><br>
+            <strong>At the same time</strong> <span class="he-inline">באותו זמן</span><br>
+            <strong>The most important thing</strong> <span class="he-inline">הדבר החשוב ביותר</span>
+          </div>
+        </div>
+        <div class="example-box">
+          <div class="example-label">✅ Two Detail Sentences</div>
+          <div class="example-text">
+            The stalls are full of colorful vegetables, fresh bread, and beautiful flowers. <br>
+            The noise of the sellers shouting and people talking makes it feel alive.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        🍞 Step 3 — Write your Closing Sentence (Bottom Bread)
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p style="margin-bottom:10px; line-height:1.7;">End with a sentence that <strong>sums up</strong> the feeling or idea. Don't add new information!
+        <span class="he">סיימו במשפט שמסכם את הרגש או הרעיון. <strong>אל תוסיפו מידע חדש!</strong></span></p>
+        <div class="word-bank">
+          <span class="word-chip">This place is special because...</span>
+          <span class="word-chip">I always feel ... when I am there.</span>
+          <span class="word-chip">That is why I love...</span>
+          <span class="word-chip">It is a place I will never forget.</span>
+          <span class="word-chip">Anyone who visits will...</span>
+        </div>
+        <div class="example-box">
+          <div class="example-label">✅ Full Paragraph (76 words)</div>
+          <div class="example-text">
+            <strong>The old market in my city is one of the most interesting places I know.</strong> The stalls are full of colorful vegetables, fresh bread, and beautiful flowers. The noise of the sellers shouting and people talking makes it feel alive. In the morning, you can also smell fresh coffee and warm pastries from the little cafés nearby. <strong>Anyone who visits this market will understand why it is the heart of our city.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider">Compare these texts!</div>
+
+    <div class="compare-grid">
+      <div class="compare-box weak">
+        <div class="compare-label" style="color:#c0392b;">❌ Weak Text</div>
+        My city is nice. There are many things there. I like it. The market is big. People go there. It is good. I think it is interesting. I go there with my family sometimes.
+        <br><br><em style="font-size:0.82rem; color:#7f8c8d;">No details, no adjectives, no structure</em>
+        <span class="he-inline">אין פרטים, אין שמות תואר, אין מבנה</span>
+      </div>
+      <div class="compare-box strong">
+        <div class="compare-label" style="color:#1e8449;">✅ Strong Text</div>
+        The old market in my city is one of the most interesting places I know. The stalls are full of colorful vegetables, fresh bread, and beautiful flowers. The noise of the sellers shouting makes it feel alive. Anyone who visits this market will understand why it is the heart of our city.
+        <br><br><em style="font-size:0.82rem; color:#27ae60;">Clear structure, vivid details, strong opener + closer</em>
+        <span class="he-inline">מבנה ברור, פרטים חיים, פתיחה וסיום חזקים</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════ ARGUMENTATIVE ══════════════ -->
+<div id="argumentative" class="section">
+
+  <div class="card">
+    <div class="card-title" style="color:#8e44ad">
+      <div class="emoji-badge">💬</div>
+      Argumentative Writing — Share Your Opinion!
+    </div>
+    <p style="line-height:1.8; margin-bottom:16px; font-size:1.02rem;">
+      In an argumentative text, you say what you <strong>think</strong> and give <strong>reasons</strong> why. You want the reader to say: <em>"Yes, I agree!"</em>
+      <span class="he">בטקסט טיעוני אתם אומרים מה אתם <strong>חושבים</strong> ומסבירים <strong>למה</strong>. אתם רוצים שהקורא יגיד: <em>"כן, אני מסכים!"</em></span>
+    </p>
+    <div class="example-box" style="border-left-color: #9b59b6; background: linear-gradient(135deg,#f5eef8,#ede4f5);">
+      <div class="example-label" style="color:#8e44ad;">The Argumentative Sandwich 🥪</div>
+      <div class="example-text">
+        <strong>Opinion</strong> (Top Bread) → <strong>Reason 1</strong> (Filling) → <strong>Reason 2</strong> (Filling) → <strong>Summary/Call</strong> (Bottom Bread)
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:#8e44ad">
+      <div class="emoji-badge">📝</div>
+      How to Write an Argumentative Text
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        🍞 Step 1 — State Your Opinion (Top Bread)
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p style="margin-bottom:10px; line-height:1.7;">Be clear! Say what you think right away. Use these phrases:
+        <span class="he">היו ברורים! תגידו מה אתם חושבים מיד. השתמשו בביטויים האלה:</span></p>
+        <div class="word-bank">
+          <span class="word-chip">I believe that...</span>
+          <span class="word-chip">In my opinion...</span>
+          <span class="word-chip">I think that...</span>
+          <span class="word-chip">It is clear that...</span>
+          <span class="word-chip">There is no doubt that...</span>
+        </div>
+        <div class="example-box">
+          <div class="example-label">✅ Strong Opinion Opener</div>
+          <div class="example-text">I believe that students should have less homework after school.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        🥩 Step 2 — Give Reasons (The Filling)
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p style="margin-bottom:10px; line-height:1.7;">Give <strong>2 reasons</strong> why you think this. Use signal words:
+        <span class="he">תנו <strong>2 סיבות</strong> למה אתם חושבים ככה. השתמשו במילות איתות:</span></p>
+        <div class="tip-grid">
+          <div class="tip-card orange">
+            <h4>First Reason <span class="he-inline">סיבה ראשונה</span></h4>
+            <strong>First of all</strong> / <strong>The first reason is</strong> / <strong>One reason is</strong>
+            <span class="he-inline">ראשית כל / הסיבה הראשונה היא / סיבה אחת היא</span>
+          </div>
+          <div class="tip-card purple">
+            <h4>Second Reason <span class="he-inline">סיבה שנייה</span></h4>
+            <strong>In addition</strong> / <strong>Also</strong> / <strong>Another reason is</strong> / <strong>Furthermore</strong>
+            <span class="he-inline">בנוסף / גם / סיבה נוספת היא / יתרה מכך</span>
+          </div>
+        </div>
+        <div class="example-box">
+          <div class="example-label">✅ Two Reasons</div>
+          <div class="example-text">
+            First of all, students need free time to rest and relax after a long school day.<br>
+            In addition, too much homework causes stress and makes students feel tired.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        🍞 Step 3 — Write a Strong Ending (Bottom Bread)
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p style="margin-bottom:10px; line-height:1.7;">Close with a sentence that repeats your opinion or calls for action. Use:
+        <span class="he">סיימו במשפט שחוזר על הדעה שלכם או קורא לפעולה. השתמשו ב:</span></p>
+        <div class="word-bank">
+          <span class="word-chip">That is why I believe...</span>
+          <span class="word-chip">In conclusion, ...</span>
+          <span class="word-chip">For these reasons, ...</span>
+          <span class="word-chip">It is time to...</span>
+          <span class="word-chip">I hope people will...</span>
+        </div>
+        <div class="example-box">
+          <div class="example-label">✅ Full Argumentative Paragraph (79 words)</div>
+          <div class="example-text">
+            <strong>I believe that students should have less homework after school.</strong> First of all, students need free time to rest and relax after a long school day. If they are always busy with homework, they cannot enjoy activities like sports, reading, or spending time with family. In addition, too much homework causes stress and makes students feel tired and unmotivated. <strong>For these reasons, I hope that teachers will think carefully about how much homework they give.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider">Useful Argumentative Words</div>
+
+    <div class="tip-grid">
+      <div class="tip-card green">
+        <h4>📢 Opinion words <span class="he-inline">מילות דעה</span></h4>
+        I believe · I think · In my opinion · I am sure · It is important · It is clear
+        <span class="he-inline">אני מאמין · אני חושב · לדעתי · אני בטוח · חשוב · ברור</span>
+      </div>
+      <div class="tip-card blue">
+        <h4>🔗 Adding reasons <span class="he-inline">הוספת סיבות</span></h4>
+        First of all · Also · In addition · Another reason · Furthermore
+        <span class="he-inline">ראשית כל · גם · בנוסף · סיבה נוספת · יתרה מכך</span>
+      </div>
+      <div class="tip-card orange">
+        <h4>🏁 Ending words <span class="he-inline">מילות סיום</span></h4>
+        In conclusion · For these reasons · That is why · To sum up · I hope that
+        <span class="he-inline">לסיכום · מסיבות אלו · לכן · בקיצור · אני מקווה ש</span>
+      </div>
+      <div class="tip-card purple">
+        <h4>📊 Giving examples <span class="he-inline">נתינת דוגמאות</span></h4>
+        For example · For instance · Such as · One example is
+        <span class="he-inline">לדוגמה · למשל · כגון · דוגמה אחת היא</span>
+      </div>
+    </div>
+
+    <div class="compare-grid" style="margin-top:18px;">
+      <div class="compare-box weak">
+        <div class="compare-label" style="color:#c0392b;">❌ Weak Argument</div>
+        I think homework is bad. It is too much. Students don't like it. It is very hard. Teachers give a lot. I think it should stop. That's my opinion.
+        <br><br><em style="font-size:0.82rem; color:#7f8c8d;">No real reasons, no structure, repetitive</em>
+        <span class="he-inline">אין סיבות אמיתיות, אין מבנה, חוזר על עצמו</span>
+      </div>
+      <div class="compare-box strong">
+        <div class="compare-label" style="color:#1e8449;">✅ Strong Argument</div>
+        I believe that students should have less homework. First of all, they need time to rest. In addition, too much homework causes stress. For these reasons, I hope teachers will think about this important issue.
+        <br><br><em style="font-size:0.82rem; color:#27ae60;">Clear opinion, two reasons, strong ending</em>
+        <span class="he-inline">דעה ברורה, שתי סיבות, סיום חזק</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════ PRACTICE ══════════════ -->
+<div id="practice" class="section">
+
+  <div class="card">
+    <div class="card-title" style="color:#e67e22">
+      <div class="emoji-badge">✏️</div>
+      Practice Tasks — Let's Write!
+    </div>
+    <p style="line-height:1.7; margin-bottom:8px; font-size:1.02rem;">Choose one task or do them all! Remember the Sandwich Method 🥪
+    <span class="he">בחרו משימה אחת או עשו את כולן! זכרו את שיטת הסנדוויץ׳ 🥪</span></p>
+    <div style="background:#fef9e7; border-radius:10px; padding:12px 16px; font-size:0.92rem; font-weight:600; border:2px solid #f9e79f;">
+      📏 Target: <strong>60–80 words</strong> per text. The word counter below will help you!
+      <span class="he">יעד: <strong>60–80 מילים</strong> לטקסט. מונה המילים למטה יעזור לכם!</span>
+    </div>
+  </div>
+
+  <!-- TASK 1 -->
+  <div class="practice-task">
+    <div class="task-number">1</div>
+    <div class="task-prompt">
+      🖼️ <strong>Descriptive Task — A Place</strong><br>
+      <span style="font-weight:600;">Write about a place you know — your school, your room, your neighborhood, or a place you visited.</span>
+      <span class="he">כתבו על מקום שאתם מכירים — בית הספר שלכם, החדר שלכם, השכונה, או מקום שביקרתם בו.</span>
+    </div>
+    <div class="task-hint">
+      💡 Hint: Use the sandwich — start with "This place is..." or "One of my favorite places is..." → Add 2 details (what you see/hear/feel) → Close with why this place is special.
+      <span class="he">רמז: השתמשו בסנדוויץ׳ — התחילו עם "This place is..." → הוסיפו 2 פרטים → סיימו למה המקום מיוחד.</span>
+    </div>
+    <div class="word-bank" style="margin-bottom:10px;">
+      <span class="word-chip" onclick="insertWord(this,'task1')">cozy</span>
+      <span class="word-chip" onclick="insertWord(this,'task1')">colorful</span>
+      <span class="word-chip" onclick="insertWord(this,'task1')">crowded</span>
+      <span class="word-chip" onclick="insertWord(this,'task1')">quiet</span>
+      <span class="word-chip" onclick="insertWord(this,'task1')">beautiful</span>
+      <span class="word-chip" onclick="insertWord(this,'task1')">also</span>
+      <span class="word-chip" onclick="insertWord(this,'task1')">in addition</span>
+      <span class="word-chip" onclick="insertWord(this,'task1')">for example</span>
+    </div>
+    <textarea id="task1" placeholder="Write your descriptive paragraph here..." oninput="countWords('task1','counter1')"></textarea>
+    <div class="word-counter" id="counter1"><span class="count-under">0 words</span></div>
+    <button class="check-btn green-btn" onclick="checkTask('task1','fb1','descriptive')">✅ Check my text</button>
+    <div class="feedback-box" id="fb1"></div>
+  </div>
+
+  <!-- TASK 2 -->
+  <div class="practice-task" style="background: linear-gradient(135deg,#f5eef8,#ede4f5); border-color:#d2b4de;">
+    <div class="task-number" style="color:#8e44ad;">2</div>
+    <div class="task-prompt">
+      💬 <strong>Argumentative Task — Your Opinion</strong><br>
+      <span style="font-weight:600;">Choose ONE topic and write your opinion with two reasons:</span>
+      <span class="he">בחרו נושא <strong>אחד</strong> וכתבו את הדעה שלכם עם שתי סיבות:</span>
+    </div>
+    <div class="tip-grid" style="margin:12px 0;">
+      <div class="tip-card purple">📱 Should students be allowed to use phones in class?<span class="he-inline">האם תלמידים צריכים להיות מורשים להשתמש בטלפון בשיעור?</span></div>
+      <div class="tip-card orange">📚 Is English an important subject to study?<span class="he-inline">האם אנגלית היא מקצוע חשוב ללמוד?</span></div>
+      <div class="tip-card blue">🏫 Should schools have longer lunch breaks?<span class="he-inline">האם צריך הפסקת צהריים ארוכה יותר?</span></div>
+      <div class="tip-card green">🎮 Are video games a good hobby for teenagers?<span class="he-inline">האם משחקי וידאו הם תחביב טוב לבני נוער?</span></div>
+    </div>
+    <div class="task-hint">💡 Hint: Start with "I believe that..." → First of all, [reason 1]. → In addition, [reason 2]. → End with "For these reasons, I think..."
+    <span class="he">רמז: התחילו עם "I believe that..." → First of all, [סיבה 1]. → In addition, [סיבה 2]. → סיימו עם "For these reasons..."</span></div>
+    <div class="word-bank" style="margin-bottom:10px;">
+      <span class="word-chip" onclick="insertWord(this,'task2')">I believe</span>
+      <span class="word-chip" onclick="insertWord(this,'task2')">First of all</span>
+      <span class="word-chip" onclick="insertWord(this,'task2')">In addition</span>
+      <span class="word-chip" onclick="insertWord(this,'task2')">For example</span>
+      <span class="word-chip" onclick="insertWord(this,'task2')">In conclusion</span>
+      <span class="word-chip" onclick="insertWord(this,'task2')">important</span>
+      <span class="word-chip" onclick="insertWord(this,'task2')">because</span>
+      <span class="word-chip" onclick="insertWord(this,'task2')">However</span>
+    </div>
+    <textarea id="task2" placeholder="Write your argumentative paragraph here..." oninput="countWords('task2','counter2')"></textarea>
+    <div class="word-counter" id="counter2"><span class="count-under">0 words</span></div>
+    <button class="check-btn blue-btn" onclick="checkTask('task2','fb2','argumentative')">✅ Check my text</button>
+    <div class="feedback-box" id="fb2"></div>
+  </div>
+
+  <!-- TASK 3 - EXTENSION -->
+  <div class="practice-task" style="background: linear-gradient(135deg,#fef3f3,#fde8e8); border-color:#f1948a;">
+    <div class="task-number" style="color:#c0392b;">3</div>
+    <div class="task-prompt">
+      🌟 <strong>Extension Task <span class="extension-badge">Challenge +</span></strong><br>
+      <span style="font-weight:600;">Write a longer descriptive text (up to 120 words). Add one more "filling" layer — a third detail that makes your text richer.</span>
+      <span class="he">כתבו טקסט תיאורי ארוך יותר (עד 120 מילים). הוסיפו עוד שכבת "מילוי" — פרט שלישי שמעשיר את הטקסט.</span>
+    </div>
+    <div class="task-hint">
+      💡 Choose: a person you admire, a special food, or your favorite memory. Use ALL 5 senses!
+      <span class="he">בחרו: אדם שאתם מעריכים, אוכל מיוחד, או זיכרון אהוב. השתמשו בכל 5 החושים!</span>
+    </div>
+    <textarea id="task3" placeholder="Challenge yourself — write up to 120 words here..." oninput="countWords('task3','counter3')" style="min-height:130px;"></textarea>
+    <div class="word-counter" id="counter3"><span class="count-under">0 words</span></div>
+    <button class="check-btn" style="background:#c0392b; color:white;" onclick="checkTask('task3','fb3','extension')">✅ Check my text</button>
+    <div class="feedback-box" id="fb3"></div>
+  </div>
+
+</div>
+
+<!-- ══════════════ RUBRIC ══════════════ -->
+<div id="rubric" class="section">
+
+  <div class="card">
+    <div class="card-title" style="color:#2c3e50">
+      <div class="emoji-badge">📊</div>
+      How Will Your Writing Be Graded?
+    </div>
+    <p style="line-height:1.8; margin-bottom:8px; font-size:1.02rem;">
+      This rubric is based on the <strong>Israeli Ministry of Education</strong> guidelines for English in junior high school (grades 7–9), aligned with the <strong>English Curriculum 2020</strong> and CEFR standards for communicative writing.
+      <span class="he">הרובריקה הזו מבוססת על הנחיות <strong>משרד החינוך הישראלי</strong> לאנגלית בחטיבת הביניים (כיתות ז׳–ט׳), בהתאם ל<strong>תוכנית הלימודים 2020</strong> ותקני ה-CEFR לכתיבה תקשורתית.</span>
+    </p>
+    <div style="background:#eaf2fb; border-radius:10px; padding:12px 16px; font-size:0.88rem; font-weight:600; border:2px solid #aed6f1;">
+      📌 Your teacher may adjust the weights. This rubric is a <em>guide</em> — the more boxes you check, the better your grade!
+      <span class="he">המורה שלכם עשוי לשנות את המשקלות. הרובריקה היא <em>מדריך</em> — ככל שתסמנו יותר, הציון יהיה טוב יותר!</span>
+    </div>
+  </div>
+
+  <div class="card" style="overflow-x:auto;">
+    <table class="rubric-table">
+      <thead>
+        <tr>
+          <th style="min-width:130px;">Criterion<br><span style="font-weight:400; font-size:0.78rem; direction:rtl;">קריטריון</span></th>
+          <th>3 — Excellent<br><span style="font-weight:400; font-size:0.78rem;">מצוין</span></th>
+          <th>2 — Good<br><span style="font-weight:400; font-size:0.78rem;">טוב</span></th>
+          <th>1 — Basic<br><span style="font-weight:400; font-size:0.78rem;">בסיסי</span></th>
+          <th>0 — Needs Work<br><span style="font-weight:400; font-size:0.78rem;">דורש שיפור</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="criterion-name">📋 Task Completion</div><small>Did you do what was asked?</small><span class="he-inline">האם עניתם על המשימה?</span></td>
+          <td><span class="score-3">Fully addresses the task. Stays on topic throughout.</span><span class="he-inline">עונה על כל המשימה. נשאר בנושא.</span></td>
+          <td><span class="score-2">Mostly on topic. Minor parts missing.</span><span class="he-inline">בעיקר בנושא. חסרים חלקים קטנים.</span></td>
+          <td><span class="score-1">Partly on topic. Some sections are unclear.</span><span class="he-inline">חלקית בנושא. יש חלקים לא ברורים.</span></td>
+          <td><span class="score-0">Did not answer the task properly.</span><span class="he-inline">לא ענה על המשימה כראוי.</span></td>
+        </tr>
+        <tr>
+          <td><div class="criterion-name">📐 Structure & Organization</div><small>Does it have a beginning, middle, and end?</small><span class="he-inline">יש פתיחה, אמצע וסיום?</span></td>
+          <td><span class="score-3">Clear opening sentence, details, closing sentence. Sandwich method used.</span><span class="he-inline">פתיחה ברורה, פרטים, סיום. שיטת הסנדוויץ׳ קיימת.</span></td>
+          <td><span class="score-2">Has most parts but structure is a little weak.</span><span class="he-inline">רוב החלקים קיימים אך המבנה קצת חלש.</span></td>
+          <td><span class="score-1">Some structure, but missing opener OR closer.</span><span class="he-inline">מבנה חלקי — חסרה פתיחה או סיום.</span></td>
+          <td><span class="score-0">No clear structure — random sentences.</span><span class="he-inline">אין מבנה ברור — משפטים אקראיים.</span></td>
+        </tr>
+        <tr>
+          <td><div class="criterion-name">💡 Content & Ideas</div><small>Are the ideas good and interesting?</small><span class="he-inline">הרעיונות טובים ומעניינים?</span></td>
+          <td><span class="score-3">Rich details, good examples, vivid or convincing ideas.</span><span class="he-inline">פרטים עשירים, דוגמאות טובות, רעיונות משכנעים.</span></td>
+          <td><span class="score-2">Some details. Ideas are relevant and clear.</span><span class="he-inline">יש פרטים. הרעיונות רלוונטיים וברורים.</span></td>
+          <td><span class="score-1">Few details. Ideas are basic or repeated.</span><span class="he-inline">מעט פרטים. רעיונות בסיסיים או חוזרים.</span></td>
+          <td><span class="score-0">Almost no content or ideas.</span><span class="he-inline">כמעט אין תוכן או רעיונות.</span></td>
+        </tr>
+        <tr>
+          <td><div class="criterion-name">📚 Vocabulary</div><small>Are the words varied and correct?</small><span class="he-inline">המילים מגוונות ונכונות?</span></td>
+          <td><span class="score-3">Varied, appropriate words. Some good adjectives/connecting words.</span><span class="he-inline">מילים מגוונות ומתאימות. שמות תואר ומילות קישור.</span></td>
+          <td><span class="score-2">Mostly correct vocabulary. Some repetition.</span><span class="he-inline">בעיקר מילים נכונות. קצת חזרות.</span></td>
+          <td><span class="score-1">Simple, limited vocabulary. Repeated words.</span><span class="he-inline">אוצר מילים פשוט ומוגבל. חזרות.</span></td>
+          <td><span class="score-0">Too simple or many wrong word choices.</span><span class="he-inline">פשוט מדי או הרבה בחירות מילים שגויות.</span></td>
+        </tr>
+        <tr>
+          <td><div class="criterion-name">✍️ Language Accuracy</div><small>Grammar, spelling, punctuation</small><span class="he-inline">דקדוק, כתיב, פיסוק</span></td>
+          <td><span class="score-3">Mostly correct grammar and spelling. Sentences are clear.</span><span class="he-inline">דקדוק וכתיב בעיקר נכונים. משפטים ברורים.</span></td>
+          <td><span class="score-2">Some errors, but meaning is still clear.</span><span class="he-inline">יש שגיאות, אבל המשמעות עדיין ברורה.</span></td>
+          <td><span class="score-1">Frequent errors that sometimes affect understanding.</span><span class="he-inline">שגיאות תכופות שלפעמים פוגעות בהבנה.</span></td>
+          <td><span class="score-0">Many errors — hard to understand.</span><span class="he-inline">הרבה שגיאות — קשה להבין.</span></td>
+        </tr>
+        <tr>
+          <td><div class="criterion-name">📏 Length</div><small>Is it the right length?</small><span class="he-inline">האורך מתאים?</span></td>
+          <td><span class="score-3">65–90 words — ideal length.</span><span class="he-inline">65–90 מילים — אורך אידיאלי.</span></td>
+          <td><span class="score-2">50–64 or 91–100 words — a little off.</span><span class="he-inline">50–64 או 91–100 מילים — קצת חורג.</span></td>
+          <td><span class="score-1">35–49 words — too short.</span><span class="he-inline">35–49 מילים — קצר מדי.</span></td>
+          <td><span class="score-0">Under 35 words — too short to assess.</span><span class="he-inline">מתחת ל-35 מילים — קצר מדי להערכה.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:#2c3e50">
+      <div class="emoji-badge">🧮</div>
+      Grade Calculator
+    </div>
+    <p style="margin-bottom:16px; line-height:1.7;">Select your score for each criterion to see your estimated grade:
+    <span class="he">בחרו ציון לכל קריטריון וראו את הציון המשוער שלכם:</span></p>
+
+    <div id="grade-criteria">
+      <!-- Generated by JS -->
+    </div>
+
+    <div style="margin-top:20px; padding:20px; background:linear-gradient(135deg,#667eea,#764ba2); border-radius:14px; text-align:center; color:white;">
+      <div style="font-size:0.9rem; font-weight:700; margin-bottom:6px; opacity:0.85;">Your Estimated Grade</div>
+      <div id="grade-result" style="font-family:'Fredoka One',cursive; font-size:3rem;">—</div>
+      <div id="grade-label" style="font-size:1rem; font-weight:700; margin-top:4px; opacity:0.9;"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="color:#27ae60">
+      <div class="emoji-badge">✅</div>
+      Before You Hand In — Self-Check!
+    </div>
+    <p style="margin-bottom:12px; line-height:1.7; font-size:0.95rem;">סמנו כל פריט שסיימתם — לפני שמגישים! ✅
+    <span style="color:#7f8c8d; font-size:0.88rem;"> | Check each item before submitting!</span></p>
+    <div id="checklist-items"></div>
+    <div id="checklist-result" style="margin-top:14px; font-weight:700; font-size:1rem; display:none;"></div>
+  </div>
+
+</div>
+
+<script>
+// ── Tab navigation
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if(b.getAttribute('onclick').includes(id)) b.classList.add('active');
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── Accordion
+function toggleAcc(header) {
+  const body = header.nextElementSibling;
+  header.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// ── Word chips
+function insertWord(chip, textareaId) {
+  const ta = document.getElementById(textareaId);
+  const word = chip.textContent + ' ';
+  const pos = ta.selectionStart;
+  ta.value = ta.value.substring(0,pos) + word + ta.value.substring(pos);
+  ta.focus();
+  ta.selectionStart = ta.selectionEnd = pos + word.length;
+  chip.classList.add('used');
+  countWords(textareaId, 'counter' + textareaId.slice(-1));
+}
+
+// ── Word counter
+function countWords(taId, counterId) {
+  const text = document.getElementById(taId).value.trim();
+  const words = text === '' ? 0 : text.split(/\s+/).length;
+  const el = document.getElementById(counterId);
+  let cls, label;
+  if(words === 0) { cls = 'count-under'; label = '0 words'; }
+  else if(words < 40) { cls = 'count-under'; label = words + ' words — Keep going! 🖊️ | המשיכו לכתוב!'; }
+  else if(words <= 80) { cls = 'count-ok'; label = words + ' words — Great! ✅ | מצוין!'; }
+  else if(words <= 90) { cls = 'count-ok'; label = words + ' words — A little long ✂️ | קצת ארוך, נסו לקצר'; }
+  else { cls = 'count-over'; label = words + ' words — Too long! ✂️ | ארוך מדי, צרו לקצר'; }
+  el.innerHTML = '<span class="' + cls + '">' + label + '</span>';
+}
+
+// ── Check task feedback
+function checkTask(taId, fbId, type) {
+  const text = document.getElementById(taId).value.trim();
+  const words = text === '' ? 0 : text.split(/\s+/).length;
+  const fb = document.getElementById(fbId);
+  fb.className = 'feedback-box show';
+
+  if(words < 10) {
+    fb.className += ' warning';
+    fb.innerHTML = '⚠️ You haven\'t written enough yet! Try to write at least 40 words.<br><span style="direction:rtl;display:block;font-size:0.85rem;">עדיין לא כתבתם מספיק! נסו לכתוב לפחות 40 מילים.</span>';
+    return;
+  }
+
+  let tips = [];
+  let score = 0;
+
+  if(words >= 40 && words <= 90) { score++; }
+  else if(words < 40) tips.push('📏 Try to write more — aim for 60–80 words. | נסו לכתוב יותר — יעד: 60–80 מילים.');
+  else tips.push('✂️ Your text is a bit long — try to reduce it to around 80 words. | הטקסט קצת ארוך — נסו לקצר לכ-80 מילים.');
+
+  if(type === 'descriptive') {
+    const adjectives = ['beautiful','colorful','cozy','huge','tiny','loud','quiet','fresh','warm','cold','soft','bright','amazing','wonderful'];
+    const hasAdj = adjectives.some(w => text.toLowerCase().includes(w));
+    if(hasAdj) score++; else tips.push('🎨 Try to add at least one adjective (colorful, beautiful, cozy...) | הוסיפו לפחות שם תואר אחד.');
+
+    const hasConnector = /also|in addition|for example|on the other hand|at the same time/i.test(text);
+    if(hasConnector) score++; else tips.push('🔗 Add a connector word like "also" or "in addition". | הוסיפו מילת קישור כמו "also" או "in addition".');
+  }
+  else if(type === 'argumentative') {
+    const hasOpinion = /i believe|in my opinion|i think|it is clear|there is no doubt/i.test(text);
+    if(hasOpinion) score++; else tips.push('💭 Start with your opinion! Use "I believe that..." | התחילו עם הדעה שלכם: "I believe that..."');
+    const hasReason = /first of all|in addition|also|another reason|furthermore/i.test(text);
+    if(hasReason) score++; else tips.push('📋 Add reasons using "First of all..." and "In addition..." | הוסיפו סיבות עם "First of all..." ו-"In addition..."');
+    const hasConclusion = /in conclusion|for these reasons|that is why|to sum up|i hope/i.test(text);
+    if(hasConclusion) score++; else tips.push('🏁 End with a conclusion: "For these reasons..." | סיימו עם מסקנה: "For these reasons..."');
+  }
+  else if(type === 'extension') {
+    if(words >= 80) score++;
+    if(words >= 100) score++;
+  }
+
+  if(tips.length === 0) {
+    fb.className = 'feedback-box show success';
+    fb.innerHTML = '🎉 Excellent work! Your text looks well-structured. Show it to your teacher!<br><span style="direction:rtl;display:block;font-size:0.85rem;">עבודה מצוינת! הטקסט שלכם נראה מאורגן היטב. הראו למורה!</span>';
+  } else {
+    fb.className = 'feedback-box show info';
+    fb.innerHTML = '👍 Good start! Here are some tips to improve:<ul style="margin-top:8px; padding-left:20px;">' +
+      tips.map(t => '<li style="margin-bottom:4px;">' + t + '</li>').join('') + '</ul>';
+  }
+}
+
+// ── Grade calculator (Rubric tab)
+const criteria = [
+  { name: '📋 Task Completion | ביצוע המשימה', key: 'task' },
+  { name: '📐 Structure & Organization | מבנה וארגון', key: 'structure' },
+  { name: '💡 Content & Ideas | תוכן ורעיונות', key: 'content' },
+  { name: '📚 Vocabulary | אוצר מילים', key: 'vocab' },
+  { name: '✍️ Language Accuracy | דיוק לשוני', key: 'lang' },
+  { name: '📏 Length | אורך', key: 'length' },
+];
+function buildGradeCalc() {
+  const el = document.getElementById('grade-criteria');
+  el.innerHTML = criteria.map(c =>
+    `<div style="display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
+      <div style="min-width:200px; font-weight:700; font-size:0.92rem;">${c.name}</div>
+      <div style="display:flex; gap:8px;">
+        ${[0,1,2,3].map(n =>
+          `<button onclick="setScore('${c.key}',${n},this)"
+            style="width:40px;height:40px;border-radius:50%;border:2px solid #ddd;background:#f8f9fa;font-weight:800;cursor:pointer;transition:all 0.2s;"
+            data-key="${c.key}" data-val="${n}">${n}</button>`
+        ).join('')}
+      </div>
+    </div>`
+  ).join('');
+}
+const scores = {};
+function setScore(key, val, btn) {
+  scores[key] = val;
+  document.querySelectorAll('[data-key="'+key+'"]').forEach(b => {
+    b.style.background = '#f8f9fa';
+    b.style.color = '#2c3e50';
+    b.style.borderColor = '#ddd';
+  });
+  const colors = ['#e74c3c','#e67e22','#3498db','#2ecc71'];
+  btn.style.background = colors[val];
+  btn.style.color = 'white';
+  btn.style.borderColor = colors[val];
+  updateGrade();
+}
+function updateGrade() {
+  const vals = Object.values(scores);
+  if(vals.length < criteria.length) return;
+  const total = vals.reduce((a,b)=>a+b,0);
+  const max = criteria.length * 3;
+  const pct = Math.round((total / max) * 100);
+  document.getElementById('grade-result').textContent = pct;
+  let label = pct >= 90 ? '⭐ Outstanding! | מצוין!' : pct >= 75 ? '👍 Good work! | עבודה טובה!' : pct >= 55 ? '📖 Keep practicing! | המשיכו להתאמן!' : '💪 You can do it! | אתם יכולים!';
+  document.getElementById('grade-label').textContent = label;
+}
+buildGradeCalc();
+
+// ── Self-check checklist
+const checks = [
+  'I have an opening sentence (topic sentence) | יש לי משפט פתיחה',
+  'I have at least 2 details or reasons in the middle | יש לי לפחות 2 פרטים/סיבות באמצע',
+  'I have a closing sentence | יש לי משפט סיום',
+  'I used at least one connector word (also, in addition...) | השתמשתי במילת קישור',
+  'I used adjectives or strong words | השתמשתי בשמות תואר או מילים חזקות',
+  'My text is between 60–80 words | הטקסט שלי בין 60–80 מילים',
+  'I checked my spelling | בדקתי את האיות שלי',
+  'I used capital letters correctly (I, start of sentence) | השתמשתי באותיות גדולות נכון',
+];
+function buildChecklist() {
+  const el = document.getElementById('checklist-items');
+  el.innerHTML = checks.map((c, i) =>
+    `<label style="display:flex; align-items:center; gap:12px; margin-bottom:10px; cursor:pointer; font-size:0.95rem; font-weight:600; padding:10px 14px; border-radius:10px; background:#f8f9fa; border:2px solid #dfe6e9; transition:background 0.2s;">
+      <input type="checkbox" onchange="updateChecklist()" style="width:20px; height:20px; cursor:pointer; accent-color:#2ecc71;">
+      ${c}
+    </label>`
+  ).join('');
+}
+function updateChecklist() {
+  const total = checks.length;
+  const checked = document.querySelectorAll('#checklist-items input:checked').length;
+  const res = document.getElementById('checklist-result');
+  res.style.display = 'block';
+  if(checked === total) {
+    res.style.color = '#1e8449';
+    res.innerHTML = '🎉 Amazing! You checked everything. Your text is ready to submit! | מדהים! סימנתם הכל. הטקסט מוכן להגשה!';
+  } else {
+    res.style.color = '#e67e22';
+    res.innerHTML = `✅ ${checked}/${total} checks done. ${total - checked} more to go! | עוד ${total - checked} פריטים לסמן!`;
+  }
+}
+buildChecklist();
+</script>
+</body>
+</html>
