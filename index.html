@@ -1247,21 +1247,37 @@ buildChecklist();
       </p>
       <span class="he">כתבו את הטקסט שלכם למטה וה-AI יבדוק אותו לפי <strong>6 קריטריוני הרובריקה</strong> — בדיוק כמו המורה!</span>
 
-      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-        <button onclick="setType('descriptive')" id="btn-desc"
-          style="padding:9px 20px; border-radius:50px; border:2px solid #27ae60; background:#eafaf1; color:#27ae60; font-weight:800; cursor:pointer; font-size:0.9rem; transition:all 0.2s;">
-          🖼️ Descriptive | תיאורי
-        </button>
-        <button onclick="setType('argumentative')" id="btn-arg"
-          style="padding:9px 20px; border-radius:50px; border:2px solid #8e44ad; background:#f5eef8; color:#8e44ad; font-weight:800; cursor:pointer; font-size:0.9rem; transition:all 0.2s;">
-          💬 Argumentative | טיעוני
-        </button>
+      <!-- STEP 1: choose type -->
+      <div id="step-type" style="margin-top:16px;">
+        <div style="font-weight:800; font-size:0.95rem; margin-bottom:10px;">
+          Step 1 — What kind of text? | שלב 1 — איזה סוג טקסט?
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button onclick="setType('descriptive')" id="btn-desc"
+            style="padding:11px 24px; border-radius:50px; border:2px solid #27ae60; background:#eafaf1; color:#27ae60; font-weight:800; cursor:pointer; font-size:0.95rem; transition:all 0.2s;">
+            🖼️ Descriptive | תיאורי
+          </button>
+          <button onclick="setType('argumentative')" id="btn-arg"
+            style="padding:11px 24px; border-radius:50px; border:2px solid #8e44ad; background:#f5eef8; color:#8e44ad; font-weight:800; cursor:pointer; font-size:0.9rem; transition:all 0.2s;">
+            💬 Argumentative | טיעוני
+          </button>
+        </div>
       </div>
-      <div id="type-chosen" style="margin-top:8px; font-size:0.85rem; color:#7f8c8d; font-weight:600;"></div>
 
-      <div style="margin-top:16px;">
+      <!-- STEP 2: choose topic (hidden until type chosen) -->
+      <div id="step-topic" style="display:none; margin-top:20px;">
+        <div style="font-weight:800; font-size:0.95rem; margin-bottom:10px;">
+          Step 2 — Choose a topic: | שלב 2 — בחרו נושא:
+        </div>
+        <div id="topic-buttons" style="display:flex; flex-direction:column; gap:9px;"></div>
+        <div id="topic-chosen" style="margin-top:10px; font-size:0.88rem; color:#7f8c8d; font-weight:600;"></div>
+      </div>
+
+      <!-- STEP 3: write (hidden until topic chosen) -->
+      <div id="step-write" style="display:none; margin-top:20px;">
+        <div id="topic-reminder" style="padding:12px 16px; border-radius:10px; margin-bottom:14px; font-weight:700; font-size:0.95rem;"></div>
         <label style="font-weight:800; font-size:1rem; display:block; margin-bottom:8px;">
-          ✍️ Your Text | הטקסט שלך
+          Step 3 — Write your text! | שלב 3 — כתבו את הטקסט! ✍️
         </label>
         <textarea id="ai-input" placeholder="Write your paragraph here... | כתבו את הפסקה שלכם כאן..."
           oninput="countWords('ai-input','ai-counter')"
@@ -1337,15 +1353,94 @@ function clearKey() {
   document.getElementById('ai-results').style.display = 'none';
 }
 
-// ── Text type selection
+// ── Topics per type
+const topics = {
+  descriptive: [
+    { en: 'A place you love — your room, a park, your school, a market...', he: 'מקום שאתם אוהבים — החדר שלכם, פארק, בית הספר, שוק...' },
+    { en: 'A person who is important to you — a friend, a parent, a teacher...', he: 'אדם חשוב לכם — חבר, הורה, מורה...' },
+    { en: 'Your favourite food — describe how it looks, smells and tastes.', he: 'האוכל האהוב עליכם — תארו איך הוא נראה, מריח וטעים.' },
+    { en: 'A special day or memory — a trip, a celebration, a moment you remember.', he: 'יום מיוחד או זיכרון — טיול, חגיגה, רגע שזכרתם.' },
+    { en: 'An animal you find interesting — describe what it looks like and how it behaves.', he: 'חיה שמעניינת אתכם — תארו איך היא נראית ומתנהגת.' },
+  ],
+  argumentative: [
+    { en: 'Should students be allowed to use phones in class?', he: 'האם תלמידים צריכים להיות מורשים להשתמש בטלפון בשיעור?' },
+    { en: 'Is English the most important subject at school?', he: 'האם אנגלית היא המקצוע החשוב ביותר בבית הספר?' },
+    { en: 'Should schools have longer lunch breaks?', he: 'האם צריך להאריך את הפסקת הצהריים בבית הספר?' },
+    { en: 'Are video games a good or bad hobby for teenagers?', he: 'האם משחקי וידאו הם תחביב טוב או רע לבני נוער?' },
+    { en: 'Should students have less homework after school?', he: 'האם תלמידים צריכים לקבל פחות שיעורי בית?' },
+  ]
+};
+
+// ── Text type + topic selection
 let chosenType = '';
+let chosenTopic = '';
+
 function setType(t) {
   chosenType = t;
-  document.getElementById('btn-desc').classList.toggle('selected', t==='descriptive');
-  document.getElementById('btn-arg').classList.toggle('selected', t==='argumentative');
-  document.getElementById('type-chosen').textContent = t === 'descriptive'
-    ? '✅ Descriptive selected | נבחר: טקסט תיאורי'
-    : '✅ Argumentative selected | נבחר: טקסט טיעוני';
+  chosenTopic = '';
+
+  // highlight selected type button
+  document.getElementById('btn-desc').classList.toggle('selected', t === 'descriptive');
+  document.getElementById('btn-arg').classList.toggle('selected', t === 'argumentative');
+
+  // build topic buttons
+  const container = document.getElementById('topic-buttons');
+  const typeColor  = t === 'descriptive' ? '#27ae60' : '#8e44ad';
+  const typeBg     = t === 'descriptive' ? '#eafaf1' : '#f5eef8';
+  container.innerHTML = topics[t].map((tp, i) => `
+    <button onclick="setTopic(${i})" id="topic-btn-${i}"
+      style="text-align:left; padding:12px 18px; border-radius:12px; border:2px solid #dfe6e9;
+             background:#f8f9fa; font-family:'Nunito',sans-serif; font-weight:700;
+             font-size:0.92rem; cursor:pointer; transition:all 0.2s; line-height:1.5;"
+      data-color="${typeColor}" data-bg="${typeBg}">
+      <span style="font-size:1.1rem; margin-right:8px;">${['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'][i]}</span>
+      ${tp.en}<br>
+      <span style="font-size:0.82rem; color:#7f8c8d; direction:rtl; display:block; margin-top:3px;">${tp.he}</span>
+    </button>`
+  ).join('');
+
+  // show topic step, hide write step
+  document.getElementById('step-topic').style.display = 'block';
+  document.getElementById('step-write').style.display  = 'none';
+  document.getElementById('topic-chosen').textContent  = '';
+  document.getElementById('ai-input') && (document.getElementById('ai-input').value = '');
+  document.getElementById('ai-counter').innerHTML = '<span class="count-under">0 words</span>';
+  document.getElementById('ai-results').style.display = 'none';
+}
+
+function setTopic(i) {
+  chosenTopic = topics[chosenType][i].en;
+  const typeColor = chosenType === 'descriptive' ? '#27ae60' : '#8e44ad';
+  const typeBg    = chosenType === 'descriptive' ? '#eafaf1' : '#f5eef8';
+
+  // highlight selected topic
+  document.querySelectorAll('[id^="topic-btn-"]').forEach(b => {
+    b.style.background   = '#f8f9fa';
+    b.style.borderColor  = '#dfe6e9';
+    b.style.color        = '#2c3e50';
+  });
+  const btn = document.getElementById('topic-btn-' + i);
+  btn.style.background  = typeBg;
+  btn.style.borderColor = typeColor;
+  btn.style.color       = typeColor;
+
+  document.getElementById('topic-chosen').textContent =
+    '✅ Topic chosen | נושא נבחר: ' + topics[chosenType][i].he;
+
+  // show topic reminder and write area
+  const reminderEl = document.getElementById('topic-reminder');
+  reminderEl.style.background  = typeBg;
+  reminderEl.style.borderLeft  = '4px solid ' + typeColor;
+  reminderEl.style.color       = typeColor;
+  reminderEl.innerHTML =
+    (chosenType === 'descriptive' ? '🖼️ Describe: ' : '💬 Your opinion on: ') +
+    '<strong>' + topics[chosenType][i].en + '</strong>' +
+    '<br><span style="font-size:0.82rem; font-weight:600; direction:rtl; display:block; margin-top:4px; color:#555;">' +
+    topics[chosenType][i].he + '</span>';
+
+  document.getElementById('step-write').style.display = 'block';
+  document.getElementById('ai-results').style.display = 'none';
+  setTimeout(() => document.getElementById('step-write').scrollIntoView({ behavior:'smooth', block:'start' }), 100);
 }
 
 // ── Grade with Gemini
@@ -1356,13 +1451,14 @@ async function gradeWithAI() {
     return;
   }
   if (!chosenType) {
-    alert('Please choose: Descriptive or Argumentative | בחרו סוג טקסט!');
+    alert('Please choose a text type first! | בחרו סוג טקסט קודם!');
     return;
   }
-  if (!geminiKey) {
-    clearKey();
+  if (!chosenTopic) {
+    alert('Please choose a topic! | בחרו נושא קודם!');
     return;
   }
+  if (!geminiKey) { clearKey(); return; }
 
   document.getElementById('ai-loading').style.display = 'block';
   document.getElementById('ai-results').style.display = 'none';
@@ -1370,10 +1466,12 @@ async function gradeWithAI() {
 
   const typeLabel = chosenType === 'descriptive' ? 'descriptive (תיאורי)' : 'argumentative (טיעוני)';
 
-  const prompt = `You are an experienced English teacher in Israel grading a junior high school student (grades 7-9) writing task. The student wrote a ${typeLabel} paragraph in English.
+  const prompt = `You are an experienced English teacher in Israel grading a junior high school student (grades 7-9) writing task.
+
+The student chose to write a ${typeLabel} paragraph on this topic: "${chosenTopic}"
 
 Grade the following student text using this rubric (each criterion: 0–3 points):
-1. Task Completion – Did the student do what was asked for a ${typeLabel} text?
+1. Task Completion – Did the student address the topic "${chosenTopic}" in a ${typeLabel} way?
 2. Structure & Organization – Is there a clear opening (topic sentence), middle (details/reasons), and closing sentence? (Sandwich method)
 3. Content & Ideas – Are the ideas relevant, detailed, and interesting?
 4. Vocabulary – Are words varied and appropriate? Are there adjectives or connecting words?
@@ -1519,10 +1617,13 @@ function resetGrader() {
   document.getElementById('ai-input').value = '';
   document.getElementById('ai-counter').innerHTML = '<span class="count-under">0 words</span>';
   document.getElementById('ai-results').style.display = 'none';
-  chosenType = '';
+  document.getElementById('step-topic').style.display = 'none';
+  document.getElementById('step-write').style.display  = 'none';
+  chosenType  = '';
+  chosenTopic = '';
   document.getElementById('btn-desc').classList.remove('selected');
   document.getElementById('btn-arg').classList.remove('selected');
-  document.getElementById('type-chosen').textContent = '';
+  document.getElementById('topic-chosen').textContent = '';
   window.scrollTo({ top: 0, behavior:'smooth' });
 }
 </script>
