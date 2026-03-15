@@ -1532,7 +1532,30 @@ Respond ONLY with a JSON object in this exact format, no preamble, no markdown:
           🔍 Error details: ${errorDetails}
         </div>
         ${isKeyError ? '<button onclick="clearKey()" style="margin-top:10px; padding:9px 20px; background:#c0392b; color:white; border:none; border-radius:50px; font-family:Nunito,sans-serif; font-weight:800; cursor:pointer;">🔑 Enter new key | הכנס מפתח חדש</button>' : ''}
+        <button onclick="listModels()" style="margin-top:10px; margin-right:8px; padding:9px 20px; background:#2980b9; color:white; border:none; border-radius:50px; font-family:Nunito,sans-serif; font-weight:800; cursor:pointer;">🔍 Check available models</button>
+        <div id="models-list" style="margin-top:10px; font-size:0.78rem; background:#fff; padding:10px; border-radius:8px; font-family:monospace; word-break:break-all; color:#555; display:none;"></div>
       </div>`;
+
+  document.getElementById('ai-results').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+async function listModels() {
+  const el = document.getElementById('models-list');
+  el.style.display = 'block';
+  el.textContent = 'Loading...';
+  try {
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${geminiKey}`);
+    const d = await r.json();
+    if (d.models) {
+      const names = d.models.map(m => m.name).join('\n');
+      el.textContent = '✅ Available models:\n' + names;
+    } else {
+      el.textContent = JSON.stringify(d);
+    }
+  } catch(e) {
+    el.textContent = 'Error: ' + e.message;
+  }
+}
   }
 }
 
