@@ -1498,10 +1498,14 @@ Respond ONLY with a JSON object in this exact format, no preamble, no markdown:
     });
 
     if (response.status === 400 || response.status === 403) {
-      throw new Error('invalid_key');
+      const errData = await response.json();
+      throw new Error('api_error:' + response.status + ':' + JSON.stringify(errData));
     }
 
     const data = await response.json();
+    if (!data.candidates || data.candidates.length === 0) {
+      throw new Error('no_candidates:' + JSON.stringify(data));
+    }
     const raw = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     const clean = raw.replace(/```json|```/g, '').trim();
     const result = JSON.parse(clean);
@@ -1512,7 +1516,8 @@ Respond ONLY with a JSON object in this exact format, no preamble, no markdown:
     document.getElementById('grade-btn').disabled = false;
     document.getElementById('ai-results').style.display = 'block';
 
-    const isKeyError = err.message === 'invalid_key';
+    const isKeyError = err.message === 'invalid_key' || err.message.includes('403');
+    const errorDetails = err.message.replace('api_error:','').replace('no_candidates:','');
     document.getElementById('ai-results').innerHTML = `
       <div class="card" style="border:2px solid #f1948a; background:#fdf2f2;">
         <div style="font-weight:800; color:#c0392b; margin-bottom:8px;">
@@ -1523,7 +1528,10 @@ Respond ONLY with a JSON object in this exact format, no preamble, no markdown:
             ? 'The key is incorrect. Ask your teacher for the correct key. | המפתח שגוי. בקשו מהמורה את המפתח הנכון.'
             : 'Could not reach the AI. Please try again. | לא ניתן להתחבר. נסו שוב.'}
         </div>
-        ${isKeyError ? '<button onclick="clearKey()" style="padding:9px 20px; background:#c0392b; color:white; border:none; border-radius:50px; font-family:Nunito,sans-serif; font-weight:800; cursor:pointer;">🔑 Enter new key | הכנס מפתח חדש</button>' : ''}
+        <div style="font-size:0.78rem; background:#fff; padding:10px; border-radius:8px; font-family:monospace; word-break:break-all; color:#555;">
+          🔍 Error details: ${errorDetails}
+        </div>
+        ${isKeyError ? '<button onclick="clearKey()" style="margin-top:10px; padding:9px 20px; background:#c0392b; color:white; border:none; border-radius:50px; font-family:Nunito,sans-serif; font-weight:800; cursor:pointer;">🔑 Enter new key | הכנס מפתח חדש</button>' : ''}
       </div>`;
   }
 }
