@@ -1324,7 +1324,7 @@ buildChecklist();
 
 <script>
 // ── API Key management
-let geminiKey = sessionStorage.getItem('gemini_key') || '';
+let geminiKey = localStorage.getItem('gemini_key') || '';
 if (geminiKey) showGrader();
 
 function saveKey() {
@@ -1334,7 +1334,7 @@ function saveKey() {
     return;
   }
   geminiKey = val;
-  sessionStorage.setItem('gemini_key', val);
+  try { localStorage.setItem('gemini_key', val); } catch(e) {}
   showGrader();
 }
 
@@ -1345,7 +1345,7 @@ function showGrader() {
 
 function clearKey() {
   geminiKey = '';
-  sessionStorage.removeItem('gemini_key');
+  try { localStorage.removeItem('gemini_key'); } catch(e) {}
   document.getElementById('api-key-input').value = '';
   document.getElementById('key-status').innerHTML = '';
   document.getElementById('api-key-card').style.display = 'block';
@@ -1554,8 +1554,6 @@ async function listModels() {
     }
   } catch(e) {
     el.textContent = 'Error: ' + e.message;
-  }
-}
   }
 }
 
